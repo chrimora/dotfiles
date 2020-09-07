@@ -1,0 +1,71 @@
+set -g terminal-overrides "xterm*:kLFT5=\eOD:kRIT5=\eOC:kUP5=\eOA:kDN5=\eOB:smkx@:rmkx@"
+
+# Nicer copying
+set -wg mode-keys vi
+
+# Don't rename windows
+set -g allow-rename off
+
+# Change prefix
+unbind C-b
+set -g prefix `
+bind ` send-prefix
+
+# Rotate panes
+unbind C-o
+bind r rotate-window
+
+# Change selecting panes
+unbind Up
+unbind Down
+unbind Left
+unbind Right
+unbind C-Up
+unbind C-Down
+unbind C-Left
+unbind C-Right
+bind -rn C-Up select-pane -U
+bind -rn C-Down select-pane -D
+bind -rn C-Left select-pane -L
+bind -rn C-Right select-pane -R
+
+# Change resizing panes
+unbind M-Up
+unbind M-Down
+unbind M-Left
+unbind M-Right
+set -s escape-time 0
+bind -rn M-Up resize-pane -U 5
+bind -rn M-Down resize-pane -D 5
+bind -rn M-Left resize-pane -L 5
+bind -rn M-Right resize-pane -R 5
+
+# Use h and v for splitting window
+unbind '"'
+unbind '%'
+bind h split-window -h -c '#{pane_current_path}'
+bind v split-window -v -c '#{pane_current_path}'
+
+# Status bar
+set -g status on
+set -g status-bg yellow
+set -g status-fg black
+set -g status-justify left
+set -g status-keys vi
+set -g status-left '  '
+set -g status-right-length 200
+set -g status-right '#T  |  %H:%M  |  %a %d %b  '
+
+# Windows display
+set -g window-status-current-bg black
+set -g window-status-current-fg white
+set -g window-status-format '#I:#W'
+
+# Pane
+unbind p
+unbind n
+bind Left select-window -p
+bind Right select-window -n
+set -g pane-active-border-fg yellow
+set -g pane-border-fg yellow
+
