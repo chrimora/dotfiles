@@ -29,7 +29,7 @@ let g:gruvbox_bold=0
 colorscheme gruvbox
 
 " Syntastic
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cursor_column = 0
 let g:syntastic_enable_balloons = 0
