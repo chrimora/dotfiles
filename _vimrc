@@ -8,7 +8,6 @@
 " https://github.com/tpope/vim-surround
 " https://github.com/preservim/nerdtree
 " https://github.com/vim-syntastic/syntastic
-" https://github.com/mg979/vim-visual-multi
 
 " Font
 " https://github.com/tonsky/FiraCode
@@ -40,7 +39,12 @@ let g:syntastic_enable_balloons = 0
 nmap <C-Tab>   :bn<Enter>
 nmap <C-S-Tab> :bp<Enter>
 " Toggle NERDTree
-nmap <C-o> :NERDTreeToggle<Enter>
+nmap <C-o> :NERDTreeFind<Enter>
+" Disable arrows in normal mode
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
 
 " Remove extra backup files
 set nobackup
@@ -55,6 +59,7 @@ set cursorline
 set background=dark
 set nocompatible
 set hidden
+set autochdir
 set showcmd
 set noshowmode
 set ignorecase
