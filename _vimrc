@@ -34,12 +34,14 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cursor_column = 0
 let g:syntastic_enable_balloons = 0
 
-" Mappings
 " Cycle buffers
 nmap <C-Tab>   :bn<Enter>
 nmap <C-S-Tab> :bp<Enter>
-" Toggle NERDTree
-nmap <C-o> :NERDTreeFind<Enter>
+
+" NERDTree
+let g:NERDTreeQuitOnOpen = 1
+" nmap <C-o> :NERDTreeFind<Enter>
+
 " Disable arrows in normal mode
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -81,7 +83,7 @@ set linebreak
 set textwidth=80
 set colorcolumn=85
 
-" Tabs are 4 spaces
+" Tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
