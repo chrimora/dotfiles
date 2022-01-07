@@ -19,12 +19,12 @@ endif
 execute pathogen#infect()
 
 " airline
-let g:airline#extensions#tabline#enabled=1
-let g:airline_section_z='%3l/%L:%3v'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_z = '%3l/%L:%3v'
 let g:airline_skip_empty_sections = 1
 
 " gruvbox
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_transparent_bg = 1
 let g:gruvbox_bold=0
 colorscheme gruvbox
 
@@ -34,13 +34,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cursor_column = 0
 let g:syntastic_enable_balloons = 0
 
+" matchit
+packadd! matchit
+
 " Cycle buffers
 nmap <C-Tab>   :bn<Enter>
 nmap <C-S-Tab> :bp<Enter>
 
 " NERDTree
 let g:NERDTreeQuitOnOpen = 1
-" nmap <C-o> :NERDTreeFind<Enter>
 
 " Disable arrows in normal mode
 nnoremap <Up> <Nop>
@@ -110,9 +112,12 @@ function! LoadSession(n)
     echo 'No session loaded.'
   endif
 endfunction
+
 " Auto save session on close
-au VimLeave * :call MakeSession('')
+autocmd VimLeave * NERDTreeClose
+autocmd VimLeave * :call MakeSession('')
 nmap <C-Enter> :call LoadSession('')<Enter>
+
 " Save/Load up to 3 sessions
 nmap <C-S-F1> :call MakeSession('1')<Enter>
 nmap <C-F1> :call LoadSession('1')<Enter>
