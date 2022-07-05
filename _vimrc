@@ -6,8 +6,16 @@
 " https://github.com/tpope/vim-repeat
 " https://github.com/Townk/vim-autoclose
 " https://github.com/tpope/vim-surround
-" https://github.com/preservim/nerdtree
-" https://github.com/vim-syntastic/syntastic
+" https://github.com/tpope/vim-unimpaired
+" https://github.com/airblade/vim-rooter
+" https://github.com/dense-analysis/ale
+
+" https://github.com/junegunn/fzf
+" https://github.com/junegunn/fzf.vim
+" Install ripgrep and bat
+" Ensure git bash is before wsl bash on path
+
+" call pathogen#helptags()
 
 " Font
 " https://github.com/tonsky/FiraCode
@@ -28,11 +36,24 @@ let g:gruvbox_transparent_bg = 1
 let g:gruvbox_bold=0
 colorscheme gruvbox
 
-" Syntastic
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cursor_column = 0
-let g:syntastic_enable_balloons = 0
+" ALE
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_python_flake8_options = '--ignore=E501' " Lines too long
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+
+let g:ale_fix_on_save = 1
+let g:ale_python_autoflake_options = '--remove-all-unused-imports --remove-unused-variables'
+let g:ale_prettier_options = '--tab-width 4'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['autoflake', 'isort', 'black'],
+\   'css': ['prettier'],
+\   'javascript': ['prettier'],
+\}
 
 " matchit
 packadd! matchit
@@ -40,9 +61,6 @@ packadd! matchit
 " Cycle buffers
 nmap <C-Tab>   :bn<Enter>
 nmap <C-S-Tab> :bp<Enter>
-
-" NERDTree
-let g:NERDTreeQuitOnOpen = 1
 
 " Disable arrows in normal mode
 nnoremap <Up> <Nop>
@@ -73,7 +91,10 @@ set incsearch
 set wildmenu
 set wildmode=full
 set backspace=indent,eol,start
-set ssop-=options
+set sessionoptions-=options
+set viewoptions-=options
+set foldmethod=indent
+set foldlevel=99
 
 " FileType plugin overwrites this
 " set formatoptions=crql
@@ -90,6 +111,13 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+" fzf related
+let g:fzf_layout = {'down':'20'}
+let g:rooter_manual_only = 1
+let g:rooter_patterns = ['.git']
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(FindRootDirectory(), fzf#vim#with_preview({"options": ['--layout=reverse', "--exact"]}), <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({"options": ['--layout=reverse', "--exact"], "dir": FindRootDirectory()}), <bang>0)
 
 " Save vim session
 function! MakeSession(n)
