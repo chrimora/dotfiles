@@ -75,6 +75,10 @@ nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 
+" Cycle buffers
+nmap <C-Tab>   :bn<Enter>
+nmap <C-S-Tab> :bp<Enter>
+
 " Remove extra backup files
 set nobackup
 set noundofile
