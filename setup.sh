@@ -1,10 +1,6 @@
 #!/bin/bash
 
-function linkdotfile {
-  file="$1"
-
-  ln -s ~/dotfiles/$file ~/$file
-}
+function linkdotfile { ln -s "~/dotfiles/$1" "~/$1" }
 
 # Editors
 linkdotfile .vimrc
