@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function linkdotfile {
-  ln -s "~/dotfiles/$1" "~/$1"
+  file="$1"
+  ln -s ~/dotfiles/$file ~/$file
 }
 
 # Editors
