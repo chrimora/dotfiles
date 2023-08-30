@@ -2,7 +2,6 @@ theme = "everforest_dark"
 
 [editor]
 true-color=true
-line-number = "relative"
 
 [editor.cursor-shape]
 insert = "bar"
