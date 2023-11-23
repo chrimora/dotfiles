@@ -1,8 +1,6 @@
 [[language]]
 name = "python"
-roots = ["pyproject.toml"]
-language-server = { command = "pyright-langserver", args = ["--stdio"] }
-config = {}
+language-servers = [ "pyright" ]
 formatter = { command = "sh", args = ["-c", "autoflake --remove-all-unused-imports - | isort - | black --quiet -"]}
 auto-format = true
 
