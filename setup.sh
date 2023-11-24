@@ -2,6 +2,7 @@
 
 function linkdotfile {
   file="$1"
+  mkdir -p ~/$(dirname "$file")
   ln -s ~/dotfiles/$file ~/$file
 }
 
