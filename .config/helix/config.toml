@@ -1,4 +1,4 @@
-theme = "everforest_dark"
+theme = "varua"
 
 [editor]
 true-color=true
@@ -9,3 +9,6 @@ normal = "block"
 
 [editor.soft-wrap]
 enable = true
+
+[editor.lsp]
+display-signature-help-docs = false
