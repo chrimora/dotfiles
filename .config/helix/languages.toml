@@ -1,7 +1,7 @@
 [[language]]
 name = "python"
 language-servers = [ "pyright" ]
-formatter = { command = "sh", args = ["-c", "autoflake --remove-all-unused-imports - | isort - | black --quiet -"]}
+formatter = { command = "sh", args = ["-c", "ruff check --fix - | ruff format -"] }
 auto-format = true
 
 [[language]]
