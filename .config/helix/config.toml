@@ -2,6 +2,7 @@ theme = "varua"
 
 [editor]
 true-color=true
+path-completion=false
 
 [editor.cursor-shape]
 insert = "bar"
